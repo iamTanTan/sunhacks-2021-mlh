@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const Hero: React.FC<Props> = ({ title }) => (
-    <Flex justifyContent='center' alignItems='center' height='100vh'>
+    <Flex justifyContent='center' alignItems='center' height='90vh'>
         <Heading
             fontSize='6vw'
             bgGradient='linear(to-l, #7928CA, #FF0080)'

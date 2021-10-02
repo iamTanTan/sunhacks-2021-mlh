@@ -19,6 +19,10 @@ export class Flight extends BaseEntity {
 
     @Field(() => String)
     @Column()
+    flightNumber!: string;
+
+    @Field(() => String)
+    @Column()
     originCity!: string;
 
     @Field(() => String)

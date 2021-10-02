@@ -22,12 +22,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FlightResolver = void 0;
+const isAuth_1 = require("../middleware/isAuth");
 const type_graphql_1 = require("type-graphql");
 const Flight_1 = require("../entities/Flight");
 let FlightResolver = class FlightResolver {
     Flight(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return Flight_1.Flight.findOne(id, { relations: ["flier"] });
+        });
+    }
+    submitFlightData(flightNumber, { req }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { userId } = req.session;
+            const flight = yield Flight_1.Flight.findOne({
+                where: { flightNumber, userId },
+            });
+            if (!flight) {
+                const flightDetails = yield fetch(`https://flight-engine-data.herokuapp.com/flights?date=2021-10-07&flightNumber=${flightNumber}`);
+                console.log(flightDetails);
+            }
+            return true;
         });
     }
 };
@@ -38,6 +52,15 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], FlightResolver.prototype, "Flight", null);
+__decorate([
+    (0, type_graphql_1.Mutation)(() => Boolean),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("input", () => String)),
+    __param(1, (0, type_graphql_1.Ctx)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], FlightResolver.prototype, "submitFlightData", null);
 FlightResolver = __decorate([
     (0, type_graphql_1.Resolver)(Flight_1.Flight)
 ], FlightResolver);
