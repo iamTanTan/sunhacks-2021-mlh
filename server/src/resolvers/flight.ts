@@ -3,8 +3,8 @@ import { Flight } from "../entities/Flight";
 
 @Resolver(Flight)
 export class FlightResolver {
-    @Query(() => FlightResolver, { nullable: true })
-    async flight(
+    @Query(() => Flight, { nullable: true })
+    async Flight(
         @Arg("id", () => Int) id: number
     ): Promise<Flight | undefined> {
         return Flight.findOne(id, { relations: ["flier"] });

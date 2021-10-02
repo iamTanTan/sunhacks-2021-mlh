@@ -28,7 +28,7 @@ const User_1 = require("./entities/User");
 const Flight_1 = require("./entities/Flight");
 const path_1 = __importDefault(require("path"));
 const RedisStore = (0, connect_redis_1.default)(express_session_1.default);
-const redis = new ioredis_1.default();
+const redis = new ioredis_1.default(6379);
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     const conn = yield (0, typeorm_1.createConnection)({
         type: "postgres",

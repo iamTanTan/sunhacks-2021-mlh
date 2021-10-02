@@ -20,26 +20,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var FlightResolver_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FlightResolver = void 0;
 const type_graphql_1 = require("type-graphql");
 const Flight_1 = require("../entities/Flight");
-let FlightResolver = FlightResolver_1 = class FlightResolver {
-    flight(id) {
+let FlightResolver = class FlightResolver {
+    Flight(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return Flight_1.Flight.findOne(id, { relations: ["flier"] });
         });
     }
 };
 __decorate([
-    (0, type_graphql_1.Query)(() => FlightResolver_1, { nullable: true }),
+    (0, type_graphql_1.Query)(() => Flight_1.Flight, { nullable: true }),
     __param(0, (0, type_graphql_1.Arg)("id", () => type_graphql_1.Int)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
-], FlightResolver.prototype, "flight", null);
-FlightResolver = FlightResolver_1 = __decorate([
+], FlightResolver.prototype, "Flight", null);
+FlightResolver = __decorate([
     (0, type_graphql_1.Resolver)(Flight_1.Flight)
 ], FlightResolver);
 exports.FlightResolver = FlightResolver;

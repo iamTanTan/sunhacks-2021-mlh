@@ -15,7 +15,7 @@ import { Flight } from "./entities/Flight";
 import path from "path";
 
 const RedisStore = connectRedis(session);
-const redis = new Redis();
+const redis = new Redis(6379);
 
 const main = async () => {
     //Initialize type-orm with configu and set migrator up

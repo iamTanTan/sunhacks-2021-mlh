@@ -7,14 +7,10 @@ interface Props {
 export const Hero: React.FC<Props> = ({ title }) => (
     <Flex justifyContent='center' alignItems='center' height='100vh'>
         <Heading
-            fontSize='10vw'
+            fontSize='6vw'
             bgGradient='linear(to-l, #7928CA, #FF0080)'
             bgClip='text'>
             {title}
         </Heading>
     </Flex>
 );
-
-Hero.defaultProps = {
-    title: "Flight Connection",
-};

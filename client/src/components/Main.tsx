@@ -5,7 +5,7 @@ export const Main: React.FC<any> = (props) => (
         spacing='1.5rem'
         width='100%'
         maxWidth='48rem'
-        mt='-45vh'
+        mt='-50vh'
         pt='8rem'
         px='1rem'
         {...props}
